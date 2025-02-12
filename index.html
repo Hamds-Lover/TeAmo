@@ -41,36 +41,34 @@
       </div>
     </div>
   </div>
-  <div id="question-container" class="hidden">
+  <div class="question-wrapper" style="display: none;">
     <p>Will you be my valentine?</p>
-    <button onclick="handleYes()">YES</button>
-    <button onclick="handleNo()">NO</button>
+    <button onclick="alert('I LOVE YOU!')">Yes</button>
+    <button onclick="alert('I am sorry you feel this way...')">No</button>
   </div>
 
   <script>
     function openEnvelope() {
-      const envelope = document.querySelector('.envelope');
-      const isOpen = envelope.classList.contains('opened');
-      
-      if (!isOpen) {
-        envelope.classList.add('opened');
-        console.log("The envelope was just opened!");
-
-        // Show the question after 5 seconds
-        setTimeout(() => {
-          document.getElementById('question-container').classList.remove('hidden');
-        }, 5000);
+      document.querySelector('.envelope').classList.add('opened');
+  
+      // Check if the paper is fully loaded after 1 second (just to simulate the smooth effect)
+      setTimeout(() => {
+        const messageElement = document.querySelector('.message');
+        messageElement.addEventListener('scroll', checkScrollEnd);
+      }, 1000);
+    }
+  
+    function checkScrollEnd() {
+      const messageElement = document.querySelector('.message');
+  
+      if (messageElement.scrollTop + messageElement.clientHeight >= messageElement.scrollHeight) {
+        showQuestion(); // Display question when the user scrolls to the end
+        messageElement.removeEventListener('scroll', checkScrollEnd); // Only show it once
       }
     }
-
-    function handleYes() {
-      console.log("You clicked Yes!");
-      alert("Thank you for liking the message!");
-    }
-
-    function handleNo() {
-      console.log("You clicked No!");
-      alert("Sorry you didn't like the message!");
+  
+    function showQuestion() {
+      document.querySelector('.question-wrapper').style.display = 'block';
     }
   </script>
 </body>
