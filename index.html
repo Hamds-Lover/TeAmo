@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A love letter...</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="envelope-wrapper">
+    <div class="envelope">
+      <div class="envelope-seal" onclick="openEnvelope()">
+        <div class="heart"></div>
+      </div>
+      <div class="envelope-flap"></div>
+    </div>
+
+    <!-- Added paper element here -->
+    <div class="paper">
+      <div class="message">
+        <p>My Love, I’ve been thinking about you constantly. You’ve been going through so much lately, and I want you to
+          know that I see your strength, even if it feels hidden beneath the weight of the world. You’re my fighter, in
+          every sense of the word—not just in the ring but in life. And even when things get tough, you never back down.
+          I know our relationship has felt a little unsteady recently. The distance, the challenges, and the ups and
+          downs have tested us in ways we didn’t expect. But through it all, one thing remains: my love and belief in
+          us. You are my heart, my partner, my everything. No amount of miles or missteps can change that. Whatever
+          you’re feeling—whether it’s frustration, sadness, or doubt—I want you to feel safe bringing it to me. I’m not
+          here just for the easy times. I’m here for the messy, uncertain moments too. You don’t have to face anything
+          alone because I will always stand beside you, no matter how bumpy the road gets. I know things aren’t perfect,
+          and we might not have all the answers yet. But what I do know is that I’m committed to working through
+          everything, hand in hand with you. We’ll talk things through, grow together, and strengthen the bond we’ve
+          built. Every challenge is just another opportunity for us to rise stronger together. I’m not going anywhere.
+          My love for you is steady, unshaken by life’s storms. And I hope you can feel that even across the distance.
+          No matter what comes our way, we’ll face it as a team. You are my everything, and I’m so proud of you—every
+          triumph, every battle, every step. I love you with every fiber of who I am. Always and forever, Rayan</p>
+      </div>
+    </div>
+  </div>
+  <div id="question-container" class="hidden">
+    <p>Will you be my valentine?</p>
+    <button onclick="handleYes()">YES</button>
+    <button onclick="handleNo()">NO</button>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      const envelope = document.querySelector('.envelope');
+      const isOpen = envelope.classList.contains('opened');
+      
+      if (!isOpen) {
+        envelope.classList.add('opened');
+        console.log("The envelope was just opened!");
+
+        // Show the question after 5 seconds
+        setTimeout(() => {
+          document.getElementById('question-container').classList.remove('hidden');
+        }, 5000);
+      }
+    }
+
+    function handleYes() {
+      console.log("You clicked Yes!");
+      alert("Thank you for liking the message!");
+    }
+
+    function handleNo() {
+      console.log("You clicked No!");
+      alert("Sorry you didn't like the message!");
+    }
+  </script>
+</body>
+
+</html>

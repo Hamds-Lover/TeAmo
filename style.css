@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffc0cb;
+  font-family: Arial, sans-serif;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 600px; /* Increased size */
+  height: 400px; /* Increased size */
+}
+
+.envelope {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 2;
+  transition: opacity 1s ease-in-out;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background-color: white;
+  border-bottom: 2px solid #000;
+  border-radius: 12px 12px 0 0;
+  transform-origin: top center;
+  transition: transform 1s ease-in-out;
+  z-index: 3;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px; /* Adjust size as needed */
+  height: 60px;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  background-image: url('heart.png'); /* Update this with the actual path to your heart icon */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%; /* Increased size */
+  height: 80%; /* Increased size */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.5s ease-in-out 0.5s; /* Delayed fade-in */
+}
+
+.message {
+  font-size: 20px; /* Slightly larger text */
+  font-family: Emilys Candy;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Animation for opening the envelope */
+.envelope.opened .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+.envelope.opened {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Ensure the paper is visible after opening */
+.envelope.opened + .paper {
+  opacity: 1;
+} 
+.hidden {
+  display: none;
+}
+
+#question-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#question-container p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#question-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  border: none;
+  background-color: #ff69b4;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#question-container button:hover {
+  background-color: #ff1493;
+}
