@@ -51,7 +51,7 @@
     function openEnvelope() {
       document.querySelector('.envelope').classList.add('opened');
   
-      // Check if the paper is fully loaded after 1 second (just to simulate the smooth effect)
+      // Check if the paper is fully loaded after 1 second
       setTimeout(() => {
         const messageElement = document.querySelector('.message');
         messageElement.addEventListener('scroll', checkScrollEnd);
@@ -62,8 +62,8 @@
       const messageElement = document.querySelector('.message');
   
       if (messageElement.scrollTop + messageElement.clientHeight >= messageElement.scrollHeight) {
-        showQuestion(); // Display question when the user scrolls to the end
-        messageElement.removeEventListener('scroll', checkScrollEnd); // Only show it once
+        messageElement.removeEventListener('scroll', checkScrollEnd); // Only trigger once
+        setTimeout(showQuestion, 10000); // Delay showing the question by 10 seconds
       }
     }
   
@@ -71,6 +71,7 @@
       document.querySelector('.question-wrapper').style.display = 'block';
     }
   </script>
+  
 </body>
 
 </html>
